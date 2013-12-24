@@ -364,14 +364,14 @@ def scroll_to_tag(view, tag, hook=None):
                 do_find = False
 
         if do_find:
-            symbol_region = view.find(escape_regex(tag.symbol) + r"(?:[^_]|$)",
-                look_from, 0)
+            symbol_region = view.find(
+                escape_regex(tag.symbol) + r"(?:[^_]|$)", look_from, 0)
 
         if do_find and symbol_region:
             # Using reversed symbol_region so cursor stays in front of the
             # symbol. - 1 to discard the additional regex part.
-            select_region = sublime.Region(symbol_region.end() - 1,
-                symbol_region.begin())
+            select_region = sublime.Region(
+                symbol_region.end() - 1, symbol_region.begin())
             select(view, select_region)
         else:
             status_message('Can\'t find "%s"' % tag.symbol)
@@ -601,9 +601,9 @@ def ctags_goto_command(jump_directly=False):
 def check_if_building(self, **args):
     """Check if ctags are currently being built"""
     if RebuildTags.build_ctags.func.running:
-        status_message('Please wait while tags are built')
-    else:
-        return True
+        error_message('Please wait while tags are built')
+        return False
+    return True
 
 
 def compile_filters(view):
