@@ -2,6 +2,9 @@
 CTags
 =====
 
+.. image:: https://travis-ci.org/SublimeText/CTags.svg?branch=development
+    :target: https://travis-ci.org/SublimeText/CTags
+
 About
 =====
 
